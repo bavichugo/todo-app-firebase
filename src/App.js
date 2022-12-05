@@ -1,24 +1,19 @@
 import "./App.scss";
-import NavBar from "./components/NavBar";
-import Stack from "react-bootstrap/Stack";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import NavBar from "./components/layout/NavBar";
 import Container from "react-bootstrap/Container";
+import FormComponent from "./components/FormComponent";
+import TodoList from "./components/TodoList";
+import Stack from "react-bootstrap/Stack";
 
 function App() {
   return (
     <>
       <NavBar />
       <Container className="mt-4">
-        <Form>
-          <Stack direction="horizontal" gap={3}>
-            <Form.Control
-              className="me-auto"
-              placeholder="Add your item here..."
-            />
-            <Button variant="primary">Submit</Button>
-          </Stack>
-        </Form>
+        <Stack gap={3}>
+          <FormComponent />
+          <TodoList />
+        </Stack>
       </Container>
     </>
   );
