@@ -11,7 +11,6 @@ const todoSlice = createSlice({
         ...action.payload,
         id: Date.now()
       }
-
       state.todoList.push(newTodoObj);
     },
     completeTodo(state, action) {

@@ -15,7 +15,7 @@ const TodoList = () => {
     <ListGroup>
       {todoList.map((todo) => (
         <ListGroup.Item key={todo.id} className="d-flex align-items-center justify-content-between">
-          {todo.todo} {todo.id}
+          {todo.todo}
             <Button className="me-1" variant="success" onClick={() => onClickCompleteHandler(todo.id)}>
               Complete
             </Button>
