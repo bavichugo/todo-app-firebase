@@ -1,28 +1,24 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { todoActions } from "src/store/todo-list-slice";
 
-const todoTemp = [{ todo: "something" }, { todo: "else" }];
+const TodoList = () => {
+  const todoList = useSelector((state) => state.todo.todoList);
+  const dispatch = useDispatch();
 
-const TodoList = (props) => {
-  const onClickCompleteHandler = () => {
-    // TODO: add complete logic
-  }
-
-  const onClickDeleteHandler = () => {
-    // TODO: add delete logic
+  const onClickCompleteHandler = (id) => {
+    dispatch(todoActions.completeTodo(id));
   }
 
   return (
     <ListGroup>
-      {todoTemp.map((todo) => (
-        <ListGroup.Item className="d-flex align-items-center justify-content-between">
-          {todo.todo}
-          <div className="todo-list__buttons-container">
-            <Button className="me-3" variant="success" onClick={onClickCompleteHandler}>
+      {todoList.map((todo) => (
+        <ListGroup.Item key={todo.id} className="d-flex align-items-center justify-content-between">
+          {todo.todo} {todo.id}
+            <Button className="me-1" variant="success" onClick={() => onClickCompleteHandler(todo.id)}>
               Complete
             </Button>
-            <Button variant="danger" onClick={onClickDeleteHandler}>Delete</Button>
-          </div>
         </ListGroup.Item>
       ))}
     </ListGroup>

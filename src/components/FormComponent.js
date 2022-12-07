@@ -2,17 +2,18 @@ import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { todoActions } from "src/store/todo-list-slice";
 
 
 const FormComponent = () => {
   const todoRef = useRef();
+  const dispatch = useDispatch();
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    
-    // TODO: obtain todo string value and add it to list to be rendered
-    // TODO: install redux and start putting the logic for the server there
-    // todoRef.current.value 
+    const newTodo = {todo: todoRef.current.value};
+    dispatch(todoActions.addTodo(newTodo));
     todoRef.current.value = "";
   }
 
